@@ -3,10 +3,10 @@ import React from 'react';
 
 const WelcomeScreen: React.FC<{ onPromptClick: (prompt: string) => void }> = ({ onPromptClick }) => {
   const examplePrompts = [
-    { title: 'Explain a concept', prompt: 'Explain quantum computing in simple terms' },
-    { title: 'Suggest ideas', prompt: 'What are some healthy dinner recipes?' },
-    { title: 'Write a story', prompt: 'Write a short story about a robot who discovers music' },
-    { title: 'Code something', prompt: 'Help me debug this Python code snippet' },
+    { title: 'Analyze an image', prompt: 'Describe this image in detail. What objects do you see?' },
+    { title: 'Plan a detailed itinerary', prompt: 'Create a 5-day itinerary for a first-time visitor to Rome, including must-see sights and food recommendations.' },
+    { title: 'Get creative', prompt: 'Write a haiku about a rainy day.' },
+    { title: 'Solve a problem', prompt: 'I have tomatoes, basil, and mozzarella. What can I make for dinner?' },
   ];
 
   return (

@@ -1,5 +1,7 @@
 {
   "name": "Shown Ai",
   "description": "An advanced multi-modal AI chat application powered by the Gemini API. Engage in conversations with text and images for a richer, more intelligent experience.",
-  "requestFramePermissions": []
+  "requestFramePermissions": [
+    "microphone"
+  ]
 }

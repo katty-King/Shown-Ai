@@ -1,4 +1,3 @@
-
 import { GoogleGenAI } from "@google/genai";
 
 // A utility function to convert a File object to a Gemini API Part object.
@@ -38,16 +37,16 @@ const getAi = () => {
 };
 
 
-export const runGemini = async (prompt: string, image?: File): Promise<string> => {
+export const runGemini = async (prompt: string, file?: File): Promise<string> => {
   try {
     const aiInstance = getAi();
     const modelName = 'gemini-2.5-flash';
 
     const parts: any[] = [];
 
-    if (image) {
-      const imagePart = await fileToGenerativePart(image);
-      parts.push(imagePart);
+    if (file) {
+      const filePart = await fileToGenerativePart(file);
+      parts.push(filePart);
     }
     
     parts.push({ text: prompt });

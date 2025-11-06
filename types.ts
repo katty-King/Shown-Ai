@@ -1,4 +1,3 @@
-
 export enum Sender {
   User = 'user',
   Model = 'model',
@@ -10,4 +9,5 @@ export interface Message {
   sender: Sender;
   text: string;
   image?: string; // base64 data URL for display
+  video?: string; // object URL for display
 }

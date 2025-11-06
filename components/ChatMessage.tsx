@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Message, Sender } from '../types';
 import Spinner from './Spinner';
@@ -20,13 +19,15 @@ const SimpleMarkdown: React.FC<{ text: string }> = ({ text }) => {
             .replace(/^\s*[-*]\s(.*)/gm, '<li class="list-disc list-inside ml-4">$1</li>')
             .replace(/\n/g, '<br />');
 
-        // This is a basic way to group list items.
-        html = html.replace(/<li/g, '</li><li').replace('</li>', '');
+        // This is a basic way to group list items. A more robust parser would be better.
+        if (html.includes('<li')) {
+            html = `<ul>${html.replace(/<\/li><li/g, '</li><li').replace(/<li/g, '</li><li').replace('</li>', '')}</ul>`.replace('<ul></li>', '<ul>');
+        }
 
         return { __html: `<div>${html}</div>` };
     };
 
-    return <div className="text-gray-200 leading-relaxed" dangerouslySetInnerHTML={createMarkup(text)} />;
+    return <div className="text-gray-200 leading-relaxed prose prose-invert prose-p:my-1" dangerouslySetInnerHTML={createMarkup(text)} />;
 };
 
 const UserIcon: React.FC = () => (
@@ -62,6 +63,13 @@ const ChatMessage: React.FC<{ message: Message }> = ({ message }) => {
                 <img
                     src={message.image}
                     alt="User upload"
+                    className="rounded-lg mb-3 max-w-xs h-auto"
+                />
+            )}
+            {message.video && (
+                <video
+                    src={message.video}
+                    controls
                     className="rounded-lg mb-3 max-w-xs h-auto"
                 />
             )}
